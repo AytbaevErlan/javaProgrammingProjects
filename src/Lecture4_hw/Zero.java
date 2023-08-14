@@ -26,7 +26,8 @@ public class Zero {
         }
         System.out.println("Your random array: ");
         System.out.println(Arrays.toString(arr));
-
+        //Найти и вывести количество нулевых элементов. Если нулевых элементов нет - вывести
+        //сообщение, что их нет
         int counter = 0;
 
         for (int i = 0; i < arrSize; i++)
