@@ -23,7 +23,6 @@ public class CreditCard {
     String accountNumber;
     int currentBalance;
 
-
     public CreditCard(String accountHolder, String accountNumber, int currentBalance)
     {
         this.accountHolder = accountHolder;
@@ -35,6 +34,7 @@ public class CreditCard {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please provide the deposit amount to the card number " + accountNumber + " under name of " + accountHolder + ": ");
         int deposit = scanner.nextInt();
+
         if ( deposit > 0)
         {
             currentBalance += deposit;
@@ -45,8 +45,7 @@ public class CreditCard {
         }
         System.out.println();
     }
-
-    void withdraw()
+       void withdraw()
     {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please provide the withdrawal amount to " + accountNumber + " under name of " + accountHolder + ": ");
@@ -56,7 +55,7 @@ public class CreditCard {
             currentBalance -= withdrawal;
             System.out.println("You withdrawn " + withdrawal + " from " + accountNumber + " and Holder's name " + accountHolder + " and current account balance is: " + currentBalance);
         }
-        else if(withdrawal < 0)
+        else if (withdrawal < 0)
         {
             System.out.println("Please provide number > 0");
         }
@@ -67,8 +66,17 @@ public class CreditCard {
     }
     void currentInfo()
     {
-        System.out.println("The ccount holder's name is: " + accountHolder);
+        System.out.println("The account holder's name is: " + accountHolder);
         System.out.println("Account number is: " + accountNumber);
         System.out.println("The account balance is: " + currentBalance);
+    }
+
+    @Override
+    public String toString() {
+        return "CreditCard{" +
+                "accountHolder='" + accountHolder + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", currentBalance=" + currentBalance +
+                '}';
     }
 }
