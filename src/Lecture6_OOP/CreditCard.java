@@ -10,6 +10,14 @@ import java.util.Scanner;
 //объекта класса CreditCard у которых заданы номер счета и начальная сумма.
 //Тестовый сценарий для проверки: Положите деньги на первые две карточки и снимите с
 //третьей. Выведите на экран текущее состояние всех трех карточек
+
+//create a class Credit card with fields for account number and current balance. Add method
+// that allows to deposit money on a credit card. Add a method which allows to withdraw from
+// credit card a certain amount of money. Add a method that displays current information
+// about credit card. Write a program that creates three objects class of CreditCard
+// which have assigned account number, and initial balance.
+// Test scenario to check: Deposit money to first and second cards and withdraw from
+// third card. Display current information of all three card on screen
 public class CreditCard {
     String accountHolder;
     String accountNumber;
