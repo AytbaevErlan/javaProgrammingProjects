@@ -1,16 +1,21 @@
 package Lecture8.task2;
 
-import java.util.Scanner;
 
-public class Circle extends Shape{
+public class Circle implements Shape {
+    private final double radius;
+
+
+    public Circle(double r) {
+        radius = r;
+    }
+
     @Override
-    void resultOfArea() {
-        Scanner scanner = new Scanner(System.in);
-        float pi = 3.14f;
-        System.out.println("Please provide radius of Circle: ");
-        float radius = scanner.nextInt();
+    public double resultOfArea() {
+        return Math.PI * (radius * radius);
+    }
 
-        float area = pi * (radius * radius);
-        System.out.println("Area of Circle when pi is " + pi + " and height is " + radius + " will be " + area);
+    @Override
+    public double resultOfPerimeter() {
+        return 2 * Math.PI * radius;
     }
 }
