@@ -6,13 +6,13 @@ package Lecture8.extraTask1;
 // 4) View all students 5) View all staff 6) Exit.
 public class Student extends Person{
     private final String group;
-    private final String address;
+    String residence;
 
-    public Student(String firstName, String lastName, String group, String address)
+    public Student(String firstName, String lastName, String group, String residence)
     {
         super(firstName, lastName);
         this.group = group;
-        this.address = address;
+        this.residence = residence;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Student extends Person{
     {
         return "Student{" +
                 "group='" + group + '\'' +
-                ", address='" + address + '\'' +
+                ", address='" + residence + '\'' +
                 '}';
     }
 

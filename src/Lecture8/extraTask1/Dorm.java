@@ -7,25 +7,31 @@ import java.util.ArrayList;
 // position - deputy, dean, rector, etc.), dormitory (address, name, set of rooms). Make a 6 item
 // menu: 1) Adding a student to the universe 2) Adding an employee to a universe 3) Settle a student into a dorm
 // 4) View all students 5) View all staff 6) Exit.
-public class Dorm extends Person {
+public class Dorm {
     private String address;
-    private String nameOf;
-    private ArrayList<Room> rooms = new ArrayList<>();
-
-//draft
-    public Dorm(String firstName, String lastName) {
-        super(firstName, lastName);
+    private String name;
+    private ArrayList<String> rooms;
+    public Dorm(String address, String name) {
         this.address = address;
-        this.nameOf = nameOf;
-        this.rooms = rooms;
+        this.name = name;
+        rooms = new ArrayList<>();
+    }
+
+
+    public void addRoom(String room) {
+        rooms.add(room);
+    }
+
+    public String getRooms() {
+        return String.join(", ", rooms);
     }
 
     @Override
     public String toString() {
-        return "Dorm{" +
-                "address='" + address + '\'' +
-                ", nameOf='" + nameOf + '\'' +
-                ", rooms=" + rooms +
-                '}';
+        return "Dormitory: " + name + ", Address: " + address + ", Rooms: " + getRooms();
+    }
+
+    public String getAddress() {
+        return " ";
     }
 }

@@ -1,5 +1,6 @@
 package Lecture8.extraTask1;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,53 +10,22 @@ import java.util.Scanner;
 // menu: 1) Adding a student to the universe 2) Adding an employee to a universe 3) Settle a student into a dorm
 // 4) View all students 5) View all staff 6) Exit.
 public class University {
-    public ArrayList<Student> students = new ArrayList<>();
-    public ArrayList<Employee> employees = new ArrayList<>();
-//    public ArrayList<Dorm> dorms = new ArrayList<>();
-
-    public void addStudent(Student student) {
-        students.add(student);
-    }
-
-    public void addEmployee(Employee employee) {
-        employees.add(employee);
-    }
-
-//    public void addDorm(Dorm dorm) {
-//        dorms.add(dorm);
-//    }
-
-    public void displayStudents() {
-        for (Student student : students) {
-            System.out.println(student);
-            System.out.println(student.getFullName());
-        }
-    }
-    // public void displayStudents() {
-    //        for (int i = 0; i < students.size(); i++) {
-    //            Student student = students.get(i);
-    //            System.out.println(student);
-    //            System.out.println(student.getFullName());
-    //        }
-    //    }
-
-    public void displayEmployee() {
-        for (Employee employee : employees) {
-            System.out.println(employee);
-            System.out.println(employee.getFullName());
-        }
-    }
-    //public void displayEmployee() {
-    //        for (int i = 0; i < employees.size(); i++) {
-    //            Employee employee = employees.get(i);
-    //            System.out.println(employee);
-    //            System.out.println(employee.getFullName());
-    //        }
-    //    }
-
-
     public static void main(String[] args) {
-        University university = new University();
+        ArrayList<Student> students = new ArrayList<>();
+        ArrayList<Employee> employeeList = new ArrayList<>();
+        ArrayList<Dorm> dormitories = new ArrayList<>();
+        Dorm dorm1 = new Dorm("Dorm Address AAA", "Dorm 1");
+        Dorm dorm2 = new Dorm("Dorm Address BBB", "Dorm 2");
+
+
+        dorm1.addRoom("101");
+        dorm1.addRoom("102");
+        dorm2.addRoom("201");
+        dorm2.addRoom("202");
+
+        dormitories.add(dorm1);
+        dormitories.add(dorm2);
+
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -79,8 +49,9 @@ public class University {
                     String studentGroupNumber = scanner.nextLine();
                     System.out.println("Provide student's address: ");
                     String studentAddress = scanner.nextLine();
-                    Student student = new Student(studentFirstName, studentLastName, studentGroupNumber, studentAddress);
-                    university.addStudent(student);
+                    students.add(new Student(studentFirstName, studentLastName, studentGroupNumber, studentAddress));
+                    System.out.println("Student added!");
+                    break;
                 }
                 case 2 -> {
                     System.out.println("Please provide employee's Name: ");
@@ -89,21 +60,70 @@ public class University {
                     String employeeLastName = scanner.nextLine();
                     System.out.println("Provide position of employee: ");
                     String employeePosition = scanner.nextLine();
-                    Employee employee = new Employee(employeeFirstName, employeeLastName, employeePosition);
-                    university.addEmployee(employee);
+                    employeeList.add(new Employee(employeeFirstName, employeeLastName, employeePosition));
+                    System.out.println("Employee added!");
+                    break;
                 }
-                case 3 -> {// not finished
-                    System.out.println("Choose a student to settle:");
-                    university.displayStudents();
-                    System.out.println("Choose a room to settle: ");
+                case 3 -> {
+                    boolean studentSettled = false;
+
+                    if (students.isEmpty()) {
+                        System.out.println("No students to settle.");
+                    } else if (dormitories.isEmpty()) {
+                        System.out.println("No dormitories available.");
+                    } else {
+                        System.out.println("Select a student to settle:");
+                        for (int i = 0; i < students.size(); i++) {
+                            System.out.println((i + 1) + ") " + students.get(i).getFullName());
+                        }
+                        int studentIndex = scanner.nextInt() - 1;
+                        scanner.nextLine();
+
+                        System.out.println("Select a dormitory to settle the student:");
+                        for (int i = 0; i < dormitories.size(); i++) {
+                            System.out.println((i + 1) + ") " + dormitories.get(i));
+                        }
+                        int dormIndex = scanner.nextInt() - 1;
+                        scanner.nextLine();
+
+                        Dorm selectedDormitory = dormitories.get(dormIndex);
+                        String roomNumber = selectedDormitory.getRooms();
+                        int nextRoomNumber = selectedDormitory.getRooms().split(", ").length + 1;
+                        students.get(studentIndex).residence = selectedDormitory.getAddress() + ", Room: " + nextRoomNumber;
+                        selectedDormitory.addRoom(Integer.toString(nextRoomNumber)); // Convert it to a string before adding
+                        System.out.println("Student settled into the dormitory successfully!");
+
+                        studentSettled = true;
+                    }
+
+                    if (studentSettled) {
+                        break;
+                    }
                 }
+
+
                 case 4 -> {
-                    System.out.println("List of all students: ");
-                    university.displayStudents();
+                    if (students.isEmpty()) {
+                        System.out.println("No students to display.");
+                    } else {
+                        System.out.println("List of Students:");
+                        for (Student student : students) {
+                            System.out.println(student.getFullName());
+                            System.out.println(student);
+                        }
+                    }
+                    break;
                 }
                 case 5 -> {
-                    System.out.println("List of all employees:");
-                    university.displayEmployee();
+                    if (employeeList.isEmpty()) {
+                        System.out.println("No staff to display.");
+                    } else {
+                        System.out.println("List of Staff:");
+                        for (Employee employee : employeeList) {
+                            System.out.println(employee.getFullName());
+                            System.out.println(employee);
+                        }
+                    }
                 }
                 case 6 -> {
                     System.out.println("Exit.");
