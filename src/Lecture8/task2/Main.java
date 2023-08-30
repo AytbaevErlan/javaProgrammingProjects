@@ -5,9 +5,9 @@ public class Main {
         Shape[] shapes = {
                 new Circle(5),
                 new Rectangle(10, 5),
-                new Triangle(7, 3, 5)};
-                new Rectangle(10, 10);
-                new Triangle(5, 5, 5);
+                new Triangle(7, 3, 5),
+                new Rectangle(10, 10),
+                new Triangle(5, 5, 5)};
 
         double sumOfPerimeter = 0;
         double sumOfArea = 0;
