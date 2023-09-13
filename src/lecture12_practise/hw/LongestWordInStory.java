@@ -8,7 +8,11 @@ import java.util.ArrayList;
 public class LongestWordInStory extends Exception {
     public static void main(String[] args) {
         ArrayList<String> words = new ArrayList<>();
-
+//I tried to do it by applying arrayList ( String data)
+// and it was fine when I had only 4-5 words, but then I
+// decided to add part of scene from the story, and it would
+// take too much time to add them one by one... And I decided
+// I will keep it as String.
         String data = """
                 Two households, both alike in dignity,
                 In fair Verona, where we lay our scene,
