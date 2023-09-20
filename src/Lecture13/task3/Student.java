@@ -36,7 +36,7 @@ public class Student {
         return sum / grades.size(); //avg
     }
 
-    public void NextCourse() {
+    public void nextCourse() {
         if (averageGrades() >= 3.0) {
             course++;
         }
@@ -50,7 +50,7 @@ public class Student {
         return course;
     }
 
-    public static class PrintAndRemove {
+    public static class printAndRemove {
         public static void removeStudentsWithLowGrades(ArrayList<Student> students) {
             Iterator<Student> iterator = students.iterator();
             while (iterator.hasNext()) {
@@ -79,7 +79,7 @@ public class Student {
         students.add(new Student("Olivia", "group2", 3, new ArrayList<>(List.of(5.0, 4.5, 5.0))));
 
 
-        PrintAndRemove.removeStudentsWithLowGrades(students);
+        printAndRemove.removeStudentsWithLowGrades(students);
 
         System.out.println("List of students after removing ones who was not studying well: ");
         for (Student student : students){
@@ -87,7 +87,7 @@ public class Student {
         }
 
         System.out.println("Current course students: ");
-        PrintAndRemove.printStudents(students, 2);
+        printAndRemove.printStudents(students, 2);
     }
 
 }
