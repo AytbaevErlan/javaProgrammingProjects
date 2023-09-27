@@ -6,24 +6,18 @@ import java.util.function.Function;
 public class Conversion {
     public static void main(String[] args) {
         Function<String, Double> convertToUsd = input -> {
+            //overrided method without try, catch
             String[] parts = input.split(" ");
             if (parts.length != 2) {
                 System.out.println("Invalid input date. Please provide as \"amount\" BYN ");
-                return null;
+                return (double) 0;
             }
-            try {
+            else {
                 double amountInBYN = Double.parseDouble(parts[0]);
                 double usdRate = 0.40;
                 double convertedToUSD =  amountInBYN * usdRate;
 
                 return convertedToUSD;
-            } catch (NumberFormatException exception) {
-                System.out.println("Invalid date provided");
-                return null;
-            }
-            catch (NullPointerException exception) {
-                System.out.println("invalid date provided");
-                return null;
             }
         };
 
@@ -38,8 +32,6 @@ public class Conversion {
             System.out.println(str + " in USD: $" + result);
         } else if (result < 0) {
             System.out.println("You provided minus amount.");
-        } else if (result == null) {
-            System.out.println("Invalid date provided.");
         }
         else {
             System.out.println("Invalid input: " + str);
