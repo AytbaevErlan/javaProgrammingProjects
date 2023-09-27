@@ -13,9 +13,8 @@ public class ExchangeStore {
             String[] parts = input.split(" ");
             if (parts.length != 2) {
                 System.out.println("Invalid input date. Please provide as \"amount\" BYN ");
-                return ;
-            }
-            else {
+                return;
+            } else {
                 double amountInBYN = Double.parseDouble(parts[0]);
                 double rateUSD = 0.40;
                 double convertsionCalculation = amountInBYN * rateUSD;
