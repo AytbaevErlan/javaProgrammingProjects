@@ -11,6 +11,7 @@ public class Conversion {
             if (parts.length != 2) {
                 System.out.println("Invalid input date. Please provide as \"amount\" BYN ");
                 return (double) 0;
+                //return 0.0 - will also work as point after zero means double
             }
             else {
                 double amountInBYN = Double.parseDouble(parts[0]);
@@ -29,7 +30,7 @@ public class Conversion {
         //System.out.println(str + " in USD $" + result);
 
         if (result > 0) {
-            System.out.println(str + " in USD: $" + result);
+            System.out.println(str  + " in USD: $" + result);
         } else if (result < 0) {
             System.out.println("You provided minus amount.");
         }
